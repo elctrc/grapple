@@ -10,7 +10,7 @@ This will install all requirements for Grapple, but not Grapple itself - which y
 #### Using Virtualenv
 ```bash
 # This will install Grapple along with the Haystack submodule
-> git clone --recurse-submodules INSERT PATH TO GITHUB PROJECT
+> git clone --recurse-submodules https://github.com/elctrc/grapple
 > cd grapple
 # Set up virtual environment
 > virtualenv venv
@@ -25,7 +25,7 @@ This will install all requirements for Grapple, but not Grapple itself - which y
 #### Using Pipenv
 __This method is currently NOT working__
 ```bash
-> git clone --recurse-submodules INSERT PATH TO GITHUB PROJECT
+> git clone --recurse-submodules https://github.com/elctrc/grapple
 > cd grapple
 # Set up virtual environment
 > pipenv shell
@@ -41,7 +41,7 @@ __This method is currently NOT working__
 This is not currently working. In the future this _should_ work:
 
 ```bash
-> pip install -e git+INSERT PATH TO GITHUB PROJECT#egg=Grapple
+> pip install -e git+https://github.com/elctrc/grapple#egg=Grapple
 ```
 
 ## Using the Package
