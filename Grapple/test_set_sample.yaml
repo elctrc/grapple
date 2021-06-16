@@ -1,0 +1,17 @@
+---
+data:
+  - question: "Who is the father of Arya Stark?"
+    answer: "Eddard Stark"
+  - question: "Who created the Dothraki vocabulary?"
+    answer: "David J. Peterson"
+  - question: "Who is the sister of Sansa?"
+    answer: "Arya"
+  - question: "Who are the freefolk?"
+    answer: "Wildlings"
+  - question: "Who is Ned Stark's sister?"
+    answer: "Lyanna"
+  - question: "What was the inspiration for the red wedding?"
+    answer: "The Red Wedding was inspired by the Black Dinner that took place in 1440 at Edinburgh Castle"
+  - question: "How is Robb Stark killed?"
+    answer: "murdered by his chief vassal, Lord Roose Bolton"
+...

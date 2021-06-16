@@ -1,0 +1,88 @@
+---
+store_type: inmem # or: elastic
+pull_method: s3 # or: gdrive or: local
+source_dir: 'https://s3.eu-central-1.amazonaws.com/deepset.ai-farm-qa/datasets/documents/wiki_gameofthrones_txt.zip'
+destination_dir: data/article_txt_got # Folder name. If pull_method == local, this should match source_dir
+unzip: True # If source is local and the files are already individual text files set this to False
+use_gpu: False
+print_results: True
+elasticsearch_options:
+  host: "localhost"
+  username: "cthulhu_ftagn"
+  password: "yggrdasil"
+  index: "document"
+
+# Here you can define levers to be shared across all test sets
+shared_levers: &shared_levers
+  clean_function:
+    # This will not do anything yet as the cleaning method is not defined anywhere
+    - clean_wiki_text
+  split_paragraphs:
+    - True
+    - False
+  k_retrieve:
+    - 1
+    - 2
+    - 5
+    - 10
+  k_read:
+    - 1
+    - 2
+    - 5
+  context_window_size:
+    - 50
+    - 100
+    - 150 # Default value for Farm (30 for Transformers)
+  model:
+    - 'deepset/roberta-base-squad2'
+    - 'deepset/bert-base-cased-squad2'
+    - 'distilbert-base-uncased-distilled-squad'
+    - 'distilroberta-base-squad2'
+    - 'bert-large-cased-whole-word-masking-finetuned-squad'
+
+shared_levers_farm: &shared_levers_farm
+  no_ans_boost:
+    - None # Default value
+    - -10
+    - 35
+  top_k_per_candidate:
+    - 1
+    - 2
+    - 3 # Default value
+  top_k_per_sample:
+    - 1 # Default value
+    - 2
+    - 3
+
+# Un-comment out this line below to add additional levers
+# shared_levers_farm: &shared_levers_transformers
+
+# Here you define specific levers for individual retrieve/reader frameworks
+framework:
+  farm:
+    reader_method: farm
+    retrieve_method:
+      tfidf:
+        levers:
+          << : *shared_levers
+          << : *shared_levers_farm
+      embeddings:
+        levers:
+          << : *shared_levers
+          << : *shared_levers_farm
+          embedding_model:
+            - 'deepset/sentence-bert'
+  transformers:
+    reader_method: transformers
+    retrieve_method:
+      tfidf:
+        levers:
+          << : *shared_levers
+          # << : *shared_levers_transformers
+      embeddings:
+        levers:
+          << : *shared_levers
+          # << : *shared_levers_transformers
+          embedding_model:
+            - 'deepset/sentence-bert'
+...

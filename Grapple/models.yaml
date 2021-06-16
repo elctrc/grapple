@@ -1,0 +1,44 @@
+---
+models:
+# This list selectively copied over from
+# https://github.com/huggingface/transformers/blob/011cc0be51cf2eb0a91333f1a731658361e81d89/docs/source/pretrained_models.rst
+  BERT:
+    - bert-base-uncased
+    - bert-large-uncased
+    - bert-base-cased
+    - bert-large-cased
+    - bert-large-uncased-whole-word-masking
+    - bert-large-cased-whole-word-masking
+    - bert-large-uncased-whole-word-masking-finetuned-squad
+    - bert-large-cased-whole-word-masking-finetuned-squad
+    - bert-base-cased-finetuned-mrpc
+  GPT:
+    - openai-gpt
+  GPT-2:
+    - gpt2
+    - gpt2-medium
+    - gpt2-large
+    - gpt2-xl
+  Transformer XL:
+    - transfo-xl-wt103
+  XLNet:
+    - xlnet-base-cased
+    - xlnet-large-cased
+  RoBERTa:
+    - roberta-base
+    - roberta-large
+    - roberta-large-mnli
+    - distilroberta-base
+    - roberta-base-openai-detector
+    - roberta-large-openai-detector
+  DistilBERT:
+    - distilbert-base-uncased
+    - distilbert-base-uncased-distilled-squad
+    - distilbert-base-cased
+    - distilbert-base-cased-distilled-squad
+    - distilgpt2
+
+error_models:
+  - deepset/roberta-base-squad2 # errors with Transformers
+  - distilroberta-base # errors with Transformers
+...
